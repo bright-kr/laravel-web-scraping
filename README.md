@@ -1,6 +1,6 @@
 # Laravel로 Webスクレイピング하기
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/) 
+[![Promo](https://github.com/bright-kr/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/) 
 
 이 가이드는 Laravel를 사용하여 Webスクレイピング을 수행하는 방법을 설명합니다:
 
@@ -50,7 +50,7 @@ Laravel에서 Webスクレイピング 튜토리얼을 따라 하려면 다음 �
 
 타깃 사이트는 다음과 같이 보입니다:
 
-![Quotes to scrape page](https://github.com/luminati-io/laravel-web-scraping/blob/main/images/68747470733a2f2f627269676874646174612e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032322f31312f51756f7465732d746f2d5363726170652d706167652d6769662e676966.gif)
+![Quotes to scrape page](https://github.com/bright-kr/laravel-web-scraping/blob/main/images/68747470733a2f2f627269676874646174612e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032322f31312f51756f7465732d746f2d5363726170652d706167652d6769662e676966.gif)
 
 **Step 1: Set up a Laravel project**
 
@@ -64,7 +64,7 @@ composer create-project laravel/laravel laravel-scraper
 
 현재 백엔드의 파일 구조는 다음과 같습니다:
 
-![file structure in the backend](https://github.com/luminati-io/laravel-web-scraping/blob/main/images/687474~1.PNG)
+![file structure in the backend](https://github.com/bright-kr/laravel-web-scraping/blob/main/images/687474~1.PNG)
 
 **Step 2: Initialize Your Scraping API**
 
@@ -148,7 +148,7 @@ curl -X GET 'http://localhost:8000/api/v1/scraping/scrape-quotes'
 
 패키지를 설치하기 전에, 요구 사항에 맞는 Laravel Webスクレイピング 라이브러리를 결정하십시오. 타깃 사이트를 열고 Developer Tools로 검사한 다음 **Network → Fetch/XHR** 섹션을 확인하십시오:
 
-![Accessing the 'Fetch XHR' section](https://github.com/luminati-io/laravel-web-scraping/blob/main/images/687474~2.PNG)
+![Accessing the 'Fetch XHR' section](https://github.com/bright-kr/laravel-web-scraping/blob/main/images/687474~2.PNG)
 
 이 사이트는 [AJAX requests](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX)를 수행하지 않으므로, HTML에 데이터가 내장된 정적 페이지입니다. [headless browser](https://brightdata.co.kr/blog/web-data/best-headless-browsers)는 오버헤드를 추가하므로 필요하지 않습니다.
 
@@ -246,7 +246,7 @@ return response()->json($html);
 2. 인용구 요소를 우클릭하고 DevTools에서 **Inspect**를 선택하십시오.  
 3. HTML을 확장하고 구조를 살펴보십시오:
 
-![Inspecting the quote elements](https://github.com/luminati-io/laravel-web-scraping/blob/main/images/687474~3.PNG)
+![Inspecting the quote elements](https://github.com/bright-kr/laravel-web-scraping/blob/main/images/687474~3.PNG)
 
 각 `.quote` 요소는 다음을 포함합니다:  
 - 인용구 텍스트를 위한 `.text` 노드  
