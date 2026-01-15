@@ -1,8 +1,8 @@
-# Laravel로 Webスクレイピング하기
+# Laravel로 Web스크레이핑하기
 
 [![Promo](https://github.com/bright-kr/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/) 
 
-이 가이드는 Laravel를 사용하여 Webスクレイピング을 수행하는 방법을 설명합니다:
+이 가이드는 Laravel를 사용하여 Web스크레이핑을 수행하는 방법을 설명합니다:
 
 - [Prerequisites](#prerequisites)
 - [How to Build a Web Scraping API in Laravel](#how-to-build-a-web-scraping-api-in-laravel)
@@ -17,23 +17,23 @@
   - [Step 9: Put It All Together](#step-9-put-it-all-together)
 - [Next Steps](#next-steps)
 
-## Laravel에서 Webスクレイピング이 가능한가요?
+## Laravel에서 Web스크레이핑이 가능한가요?
 
-[Laravel](https://laravel.com/)은 우아한 문법을 갖춘 강력한 PHP 프레임워크로, Webスクレイピング을 위한 API를 구축하는 데 이상적입니다. 다양한 スクレイピング 라이브러리를 지원하여 데이터 추출을 단순화합니다. 
+[Laravel](https://laravel.com/)은 우아한 문법을 갖춘 강력한 PHP 프레임워크로, Web스크레이핑을 위한 API를 구축하는 데 이상적입니다. 다양한 스크레이핑 라이브러리를 지원하여 데이터 추출을 단순화합니다. 
 
-Laravel의 확장성, 쉬운 통합, 강력한 MVC 아키텍처는 スクレイピング 로직을 잘 구조화된 상태로 유지해 주므로, 복잡하거나 대규모 프로젝트에 적합합니다. 자세한 내용은 [PHP에서 web scraping](https://brightdata.co.kr/blog/how-tos/web-scraping-php) 가이드를 참조하십시오.
+Laravel의 확장성, 쉬운 통합, 강력한 MVC 아키텍처는 스크레이핑 로직을 잘 구조화된 상태로 유지해 주므로, 복잡하거나 대규모 프로젝트에 적합합니다. 자세한 내용은 [PHP에서 web scraping](https://brightdata.co.kr/blog/how-tos/web-scraping-php) 가이드를 참조하십시오.
 
-## 최고의 Laravel Webスクレイピング 라이브러리
+## 최고의 Laravel Web스크레이핑 라이브러리
 
-다음은 Laravel에서 Webスクレイピング에 유용한 주요 라이브러리입니다:
+다음은 Laravel에서 Web스크레이핑에 유용한 주요 라이브러리입니다:
 
-- [**BrowserKit**](https://github.com/symfony/browser-kit) – 정적 HTML 문서와 상호작용하기 위한 웹 브라우저 API를 시뮬레이션하는 Symfony 컴포넌트입니다. `DomCrawler`와 함께 사용하면 효율적으로 탐색 및 スクレイピング을 수행할 수 있습니다.
-- [**HttpClient**](https://github.com/symfony/http-client) – `BrowserKit`과 매끄럽게 통합되어 リクエスト를 전송할 수 있는 Symfony HTTP 클라이언트입니다.
-- [**Guzzle**](https://github.com/guzzle/guzzle) – 웹 リクエスト를 생성하고 レスポンス를 처리하기 위한 강력한 HTTP 클라이언트입니다. HTML 문서를 가져오는 데 유용합니다. [Guzzle에서 プロキシ 설정 방법](https://brightdata.co.kr/blog/how-tos/proxy-with-guzzle)을 확인하십시오.
-- [**Panther**](https://github.com/symfony/panther) – JavaScript 렌더링 또는 상호작용이 필요한 동적 사이트를 スクレイピング하기 위한 헤드리스 브라우저입니다.
+- [**BrowserKit**](https://github.com/symfony/browser-kit) – 정적 HTML 문서와 상호작용하기 위한 웹 브라우저 API를 시뮬레이션하는 Symfony 컴포넌트입니다. `DomCrawler`와 함께 사용하면 효율적으로 탐색 및 스크레이핑을 수행할 수 있습니다.
+- [**HttpClient**](https://github.com/symfony/http-client) – `BrowserKit`과 매끄럽게 통합되어 요청를 전송할 수 있는 Symfony HTTP 클라이언트입니다.
+- [**Guzzle**](https://github.com/guzzle/guzzle) – 웹 요청를 생성하고 응답를 처리하기 위한 강력한 HTTP 클라이언트입니다. HTML 문서를 가져오는 데 유용합니다. [Guzzle에서 프록시 설정 방법](https://brightdata.co.kr/blog/how-tos/proxy-with-guzzle)을 확인하십시오.
+- [**Panther**](https://github.com/symfony/panther) – JavaScript 렌더링 또는 상호작용이 필요한 동적 사이트를 스크레이핑하기 위한 헤드리스 브라우저입니다.
 ## Prerequisites
 
-Laravel에서 Webスクレイピング 튜토리얼을 따라 하려면 다음 사전 요구 사항을 충족해야 합니다:
+Laravel에서 Web스크레이핑 튜토리얼을 따라 하려면 다음 사전 요구 사항을 충족해야 합니다:
 
 - [PHP 8+](https://www.php.net/downloads.php)
 - [Composer](https://getcomposer.org/download/)
@@ -42,7 +42,7 @@ Laravel에서 Webスクレイピング 튜토리얼을 따라 하려면 다음 �
 
 ## How to Build a Web Scraping API in Laravel
 
-이 섹션에서는 [Quotes scraping sandbox site](https://quotes.toscrape.com/)를 사용하여 Laravel Webスクレイピング API를 만드는 과정을 안내합니다. スクレイピング エンドポイント는 다음을 수행합니다:
+이 섹션에서는 [Quotes scraping sandbox site](https://quotes.toscrape.com/)를 사용하여 Laravel Web스크레이핑 API를 만드는 과정을 안내합니다. 스크레이핑 엔드포인트는 다음을 수행합니다:
 
 1. 페이지에서 인용구 quote HTML 요소를 선택합니다  
 2. 해당 요소들에서 데이터를 추출합니다  
@@ -54,7 +54,7 @@ Laravel에서 Webスクレイピング 튜토리얼을 따라 하려면 다음 �
 
 **Step 1: Set up a Laravel project**
 
-터미널을 열고 아래 Composer [`create-command`](https://getcomposer.org/doc/03-cli.md#create-project) 명령을 실행하여 Laravel Webスクレイピング 애플리케이션을 초기화하십시오:
+터미널을 열고 아래 Composer [`create-command`](https://getcomposer.org/doc/03-cli.md#create-project) 명령을 실행하여 Laravel Web스크레이핑 애플리케이션을 초기화하십시오:
 
 ```bash
 composer create-project laravel/laravel laravel-scraper
@@ -114,7 +114,7 @@ return response()->json('Hello, World!');
 use Illuminate\Http\JsonResponse;
 ```
 
-`routes/api.php`에 다음 줄을 추가하여 `scrapeQuotes()` 메서드를 전용 エンドポイント에 연결하십시오:
+`routes/api.php`에 다음 줄을 추가하여 `scrapeQuotes()` 메서드를 전용 엔드포인트에 연결하십시오:
 
 ```php
 use App\Http\Controllers\ScrapingController;
@@ -122,7 +122,7 @@ use App\Http\Controllers\ScrapingController;
 Route::get('/v1/scraping/scrape-quotes', [ScrapingController::class, 'scrapeQuotes']);
 ```
 
-Laravel スクレイピング API가 예상대로 작동하는지 확인해 보겠습니다. Laravel API는 `/api` 경로 아래에서 사용 가능하므로, 전체 API エンドポイント는 `/api/v1/scraping/scrape-quotes`입니다.
+Laravel 스크레이핑 API가 예상대로 작동하는지 확인해 보겠습니다. Laravel API는 `/api` 경로 아래에서 사용 가능하므로, 전체 API 엔드포인트는 `/api/v1/scraping/scrape-quotes`입니다.
 
 Laravel 애플리케이션을 실행하십시오:
 
@@ -132,13 +132,13 @@ php artisan serve
 
 이제 서버가 로컬에서 `8000` 포트로 수신 대기 중이어야 합니다.
 
-cURL로 `/api/v1/scraping/scrape-quotes` エンドポイント에 `GET` リクエスト를 보내십시오:
+cURL로 `/api/v1/scraping/scrape-quotes` 엔드포인트에 `GET` 요청를 보내십시오:
 
 ```bash
 curl -X GET 'http://localhost:8000/api/v1/scraping/scrape-quotes'
 ```
 
-다음 レスポンス가 반환되어야 합니다:
+다음 응답가 반환되어야 합니다:
 
 ```
 "Hello, World!"
@@ -146,13 +146,13 @@ curl -X GET 'http://localhost:8000/api/v1/scraping/scrape-quotes'
 
 **Step 3: Install the scraping libraries**
 
-패키지를 설치하기 전에, 요구 사항에 맞는 Laravel Webスクレイピング 라이브러리를 결정하십시오. 타깃 사이트를 열고 Developer Tools로 검사한 다음 **Network → Fetch/XHR** 섹션을 확인하십시오:
+패키지를 설치하기 전에, 요구 사항에 맞는 Laravel Web스크레이핑 라이브러리를 결정하십시오. 타깃 사이트를 열고 Developer Tools로 검사한 다음 **Network → Fetch/XHR** 섹션을 확인하십시오:
 
 ![Accessing the 'Fetch XHR' section](https://github.com/bright-kr/laravel-web-scraping/blob/main/images/687474~2.PNG)
 
 이 사이트는 [AJAX requests](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX)를 수행하지 않으므로, HTML에 데이터가 내장된 정적 페이지입니다. [headless browser](https://brightdata.co.kr/blog/web-data/best-headless-browsers)는 오버헤드를 추가하므로 필요하지 않습니다.
 
-효율적인 スクレイピング을 위해 Symfony의 [`BrowserKit`](https://symfony.com/doc/current/http_client.html)과 [`HttpClient`](https://symfony.com/doc/current/http_client.html)를 사용하십시오. 다음으로 설치합니다:
+효율적인 스크레이핑을 위해 Symfony의 [`BrowserKit`](https://symfony.com/doc/current/http_client.html)과 [`HttpClient`](https://symfony.com/doc/current/http_client.html)를 사용하십시오. 다음으로 설치합니다:
 
 ```bash
 composer require symfony/browser-kit symfony/http-client
@@ -174,9 +174,9 @@ use Symfony\Component\HttpClient\HttpClient;
 $browser = new HttpBrowser(HttpClient::create());
 ```
 
-`HttpBrowser`는 Cookie 및 セッション 처리 등을 포함하여 브라우저 동작을 모방하면서 HTTP リクエスト를 수행할 수 있게 해줍니다. 다만 실제 브라우저에서 リクエスト를 실행하지는 않습니다.
+`HttpBrowser`는 Cookie 및 세션 처리 등을 포함하여 브라우저 동작을 모방하면서 HTTP 요청를 수행할 수 있게 해줍니다. 다만 실제 브라우저에서 요청를 실행하지는 않습니다.
 
-`request()` 메서드를 사용하여 타깃 URL로 HTTP GET リクエスト를 수행하십시오:
+`request()` 메서드를 사용하여 타깃 URL로 HTTP GET 요청를 수행하십시오:
 
 ```php
 $crawler = $browser->request('GET', 'https://quotes.toscrape.com/');
@@ -315,7 +315,7 @@ $raw_text = $text_html_element->text();
 $text = str_replace(["\u{201c}", "\u{201d}"], '', $raw_text);
 ```
 
-마찬가지로 다음 코드로 저자 정보를 スクレイピング하십시오:
+마찬가지로 다음 코드로 저자 정보를 스크레이핑하십시오:
 
 ```php
 $author_html_element = $quote_crawler->filter('.author');
@@ -323,7 +323,7 @@ $author_html_element = $quote_crawler->filter('.author');
 $author = $author_html_element->text();
 ```
 
-태그 スクレイピング은 까다로울 수 있습니다. 하나의 인용구에 여러 태그가 있을 수 있으므로, 배열을 정의하고 각 태그를 개별적으로 スクレイピング해야 합니다:
+태그 스크레이핑은 까다로울 수 있습니다. 하나의 인용구에 여러 태그가 있을 수 있으므로, 배열을 정의하고 각 태그를 개별적으로 스크레이핑해야 합니다:
 
 ```php
 $tag_html_elements = $quote_crawler->filter('.tag');
@@ -341,7 +341,7 @@ $tags[] = $tag;
 
 `filter()`가 반환하는 `DOMNode` 요소는 `text()` 메서드를 노출하지 않습니다. 대신 `textContent` 속성을 제공합니다.
 
-다음은 전체 Laravel 데이터 スクレイピング 로직입니다:
+다음은 전체 Laravel 데이터 스크레이핑 로직입니다:
 
 ```php
 // create a new quote crawler
@@ -393,13 +393,13 @@ $quote = [
 $quotes[] = $quote;
 ```
 
-다음으로, API レスポンス 데이터를 `$quotes` 목록으로 업데이트하십시오:
+다음으로, API 응답 데이터를 `$quotes` 목록으로 업데이트하십시오:
 
 ```php
 return response()->json(['quotes' => $quotes]);
 ```
 
-スクレイピング 루프가 끝나면 `$quotes`에는 다음이 포함됩니다:
+스크레이핑 루프가 끝나면 `$quotes`에는 다음이 포함됩니다:
 
 ```php
 array(10) {
@@ -477,7 +477,7 @@ string(6) "simile"
 }
 ```
 
-이 데이터는 이후 JSON으로 직렬화되어 Laravel スクレイピング API에 의해 반환됩니다.
+이 데이터는 이후 JSON으로 직렬화되어 Laravel 스크레이핑 API에 의해 반환됩니다.
 
 **Step 9: Put it all together**
 
@@ -593,7 +593,7 @@ return response()->json(['quotes' => $quotes]);
 php artisan serve
 ```
 
-`/api/v1/scraping/scrape-quotes` エンドポイント로 GET リクエスト를 보내십시오:
+`/api/v1/scraping/scrape-quotes` 엔드포인트로 GET 요청를 보내십시오:
 
 ```bash
 curl -X GET 'http://localhost:8000/api/v1/scraping/scrape-quotes'
@@ -653,24 +653,24 @@ curl -X GET 'http://localhost:8000/api/v1/scraping/scrape-quotes'
 
 ## Next steps
 
-이 API는 Laravel의 Webスクレイピング 기능에 대한 기본 예시입니다. 프로젝트를 개선하고 확장하려면 다음과 같은 향상을 고려하십시오:
+이 API는 Laravel의 Web스크레이핑 기능에 대한 기본 예시입니다. 프로젝트를 개선하고 확장하려면 다음과 같은 향상을 고려하십시오:
 
-- **Webクローリング 구현** – 타깃 사이트는 여러 페이지로 구성되어 있습니다. Webクローリング을 사용하여 모든 인용구를 효율적으로 수집하십시오.  
-- **スクレイピング 작업 스케줄링** – API 호출을 스케줄링하고, 데이터를 데이터베이스에 저장하며, 최신 상태를 유지하여 데이터 수집을 자동화하십시오.  
-- **プロキシ 통합** – レジデンシャルプロキシ를 사용해 リクエスト를 분산하고 アンチボット/アンチスクレイピング 조치를 우회하여 IP 차단을 피하십시오.  
+- **Web크롤링 구현** – 타깃 사이트는 여러 페이지로 구성되어 있습니다. Web크롤링을 사용하여 모든 인용구를 효율적으로 수집하십시오.  
+- **스크레이핑 작업 스케줄링** – API 호출을 스케줄링하고, 데이터를 데이터베이스에 저장하며, 최신 상태를 유지하여 데이터 수집을 자동화하십시오.  
+- **프록시 통합** – レジデンシャル프록시를 사용해 요청를 분산하고 안티봇/アンチ스크레이핑 조치를 우회하여 IP 차단을 피하십시오.  
 
-## 윤리적 Webスクレイピング
+## 윤리적 Web스크레이핑
 
-Webスクレイピング은 데이터 수집을 위한 강력한 도구이지만, 윤리적이고 책임감 있게 수행되어야 합니다. 준수를 보장하고 타깃 사이트에 피해를 주지 않기 위해 다음 모범 사례를 따르십시오:
+Web스크레이핑은 데이터 수집을 위한 강력한 도구이지만, 윤리적이고 책임감 있게 수행되어야 합니다. 준수를 보장하고 타깃 사이트에 피해를 주지 않기 위해 다음 모범 사례를 따르십시오:
 
-- **사이트의 서비스 약관 검토** – スクレイピング 전에 데이터 사용, 저작권, 지적 재산권에 관한 가이드라인을 확인하십시오.  
-- **`robots.txt` 규칙 준수** – 윤리적인 スクレイピング 관행을 유지하기 위해 사이트의 クローリング 지침을 따르십시오.  
-- **공개 데이터만 スクレイ핑** – 認証이 필요한 제한된 콘텐츠는 피하십시오. 비공개 데이터를 スクレイピング하면 법적 결과가 발생할 수 있습니다.  
-- **リクエスト 빈도 제한** – リクエスト 간격을 조절하고 무작위 지연을 추가하여 서버 과부하와 レート制限을 방지하십시오.  
-- **신뢰할 수 있는 スクレイピング 도구 사용** – 윤리적 スクレイピング 가이드라인을 따르는, 유지보수가 잘 되는 도구를 선택하십시오.
+- **사이트의 서비스 약관 검토** – 스크레이핑 전에 데이터 사용, 저작권, 지적 재산권에 관한 가이드라인을 확인하십시오.  
+- **`robots.txt` 규칙 준수** – 윤리적인 스크레이핑 관행을 유지하기 위해 사이트의 크롤링 지침을 따르십시오.  
+- **공개 데이터만 スクレイ핑** – 인증이 필요한 제한된 콘텐츠는 피하십시오. 비공개 데이터를 스크레이핑하면 법적 결과가 발생할 수 있습니다.  
+- **요청 빈도 제한** – 요청 간격을 조절하고 무작위 지연을 추가하여 서버 과부하와 속도 제한을 방지하십시오.  
+- **신뢰할 수 있는 스크레이핑 도구 사용** – 윤리적 스크레이핑 가이드라인을 따르는, 유지보수가 잘 되는 도구를 선택하십시오.
 
 ## 결론
 
-Laravel로 Webスクレイピング을 수행하는 것은 간단하며 몇 줄의 코드만으로도 가능합니다. 그러나 대부분의 사이트는 アンチボット 및 アンチスクレイピング 솔루션으로 데이터를 보호합니다. 이를 우회하려면, 어떤 페이지든 アンチスクレイピング 조치를 우회하여 깨끗한 HTML을 매끄럽게 반환할 수 있는 언락킹 API인 [**Web Unlocker**](https://brightdata.co.kr/products/web-unlocker)를 사용할 수 있습니다.
+Laravel로 Web스크레이핑을 수행하는 것은 간단하며 몇 줄의 코드만으로도 가능합니다. 그러나 대부분의 사이트는 안티봇 및 アンチ스크레이핑 솔루션으로 데이터를 보호합니다. 이를 우회하려면, 어떤 페이지든 アンチ스크레이핑 조치를 우회하여 깨끗한 HTML을 매끄럽게 반환할 수 있는 언락킹 API인 [**Web Unlocker**](https://brightdata.co.kr/products/web-unlocker)를 사용할 수 있습니다.
 
 지금 가입하고 무료 체험을 시작하십시오.
